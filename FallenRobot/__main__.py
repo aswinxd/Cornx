@@ -78,15 +78,21 @@ Hey there! My name is corn - I'm here to help you manage your groups! Hit Help a
 buttons = [
     [
         InlineKeyboardButton(
-            text="➕Add Me To Your Groups➕",
+            text="Add Me",
             url=f"https://t.me/{BOT_USERNAME}?startgroup=true",
         ),
     ],
+    [
+        InlineKeyboardButton(text="Commands Help", callback_data="help_back"),
+    ],
+    [
+        InlineKeyboardButton(text="Owner", url=f"https://t.me/CORNX_SUPPORT"),
+        InlineKeyboardButton(text="Support", url=f"https://t.me/CORNX_SUPPORT"),
+    ],
 ]
 
-
 HELP_STRINGS = f"""
-This is wayne help Module click the buttons to see the help
+This is Watch Dog help Module click the buttons to see the help
 If you have any doubts head to support chat"""
 
 IMPORTED = {}
@@ -192,7 +198,7 @@ def start(update: Update, context: CallbackContext):
             )
     else:
         update.effective_message.reply_text(
-          "Iam online  !\n<b>UPDATE​:</b> <code>{}</code>".format(
+          "Heya :) PM me if you have any questions on how to use me!".format(
                 uptime
             ),
             parse_mode=ParseMode.HTML,
@@ -323,7 +329,7 @@ def Fallen_about_callback(update: Update, context: CallbackContext):
     if query.data == "fallen_":
         uptime = get_readable_time((time.time() - StartTime))
         query.message.edit_text(
-            text=f"**NOTE:**This bot is a result of open-source contributions and most of the functions are from some open source bots and iam not the who should take the credits of the bot. And as i said that i took ideas of other devs to build this so iam not going to relese this bot code for public maybe in future with all their permission SO DONT DM ME FOR SOURCE CODE PLEASE! @Xenonbots",
+            text=f"Thankyou @Xenonbots for helping us on this project",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
@@ -569,72 +575,4 @@ def migrate_chats(update: Update, context: CallbackContext):
         old_chat = update.effective_chat.id
         new_chat = msg.migrate_to_chat_id
     elif msg.migrate_from_chat_id:
-        old_chat = msg.migrate_from_chat_id
-        new_chat = update.effective_chat.id
-    else:
-        return
-
-    LOGGER.info("Migrating from %s, to %s", str(old_chat), str(new_chat))
-    for mod in MIGRATEABLE:
-        mod.__migrate__(old_chat, new_chat)
-
-    LOGGER.info("Successfully migrated!")
-    raise DispatcherHandlerStop
-
-
-def main():
-
-    if SUPPORT_CHAT is not None and isinstance(SUPPORT_CHAT, str):
-        try:
-            dispatcher.bot.sendMessage(f"@{SUPPORT_CHAT}", "I am now online!")
-        except Unauthorized:
-            LOGGER.warning(
-                "Bot isnt able to send message to support_chat, go and check!",
-            )
-        except BadRequest as e:
-            LOGGER.warning(e.message)
-
-    
-    start_handler = CommandHandler("start", start, run_async=True)
-
-    help_handler = CommandHandler("help", get_help, run_async=True)
-    help_callback_handler = CallbackQueryHandler(
-        help_button, pattern=r"help_.*", run_async=True
-    )
-
-    settings_handler = CommandHandler("settings", get_settings, run_async=True)
-    settings_callback_handler = CallbackQueryHandler(
-        settings_button, pattern=r"stngs_", run_async=True
-    )
-    about_callback_handler = CallbackQueryHandler(
-        Fallen_about_callback, pattern=r"fallen_", run_async=True
-    )
-
-    migrate_handler = MessageHandler(Filters.status_update.migrate, migrate_chats)
-
-    dispatcher.add_handler(start_handler)
-    dispatcher.add_handler(help_handler)
-    dispatcher.add_handler(about_callback_handler)
-    dispatcher.add_handler(settings_handler)
-    dispatcher.add_handler(help_callback_handler)
-    dispatcher.add_handler(settings_callback_handler)
-    dispatcher.add_handler(migrate_handler)
-
-    dispatcher.add_error_handler(error_callback)
-
-    LOGGER.info("Elsandra Using long polling..")
-    updater.start_polling(timeout=15, read_latency=4, drop_pending_updates=True)
-
-    if len(argv) not in (1, 3, 4):
-        telethn.disconnect()
-    else:
-        telethn.run_until_disconnected()
-
-    updater.idle()
-
-
-if __name__ == "__main__":
-    LOGGER.info("elsandra Successfully loaded modules: " + str(ALL_MODULES))
-    telethn.start(bot_token=TOKEN)
-    pbot.start()
-    main()
+        old_chat = msg.migrate_
