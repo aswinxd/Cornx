@@ -9,23 +9,23 @@ class Config(object):
 
     DATABASE_URL = ""
     EVENT_LOGS = "-1001535538162"  # Event logs channel to note down important bot level
-    MONGO_DB_URI = ""  # Get ths value from cloud.mong
+    MONGO_DB_URI = "mongodb+srv://test:test@cluster0.q9llhnj.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"  # Get ths value from cloud.mong
     # Telegraph link of the image which will be shown at start command.
     START_IMG = "https://telegra.ph/file/7298939991d9f7e46c904.jpg"
-    SUPPORT_CHAT = ""
+    SUPPORT_CHAT = "CORNX_SUPPORT"
     
     # Your Telegram support group chat username where your users will go and bother you
-    TOKEN = "" 
+    TOKEN = "7101309513:AAFch9CExFpQXNeNTxduPCJQqAnN2uqZvjk" 
     TIME_API_KEY = "YDNAVZ2G1KUL" # Get bot token from @BotFather on Telegram
-    OWNER_ID = "1137799257"  # User id of your telegram account (Must be integer)
+    OWNER_ID = "5499564416"  # User id of your telegram account (Must be integer)
 
     # Optional fields
     BL_CHATS = []  # List of groups that you want blacklisted.
-    DRAGONS = [5619966662]  # User id of sudo users
-    DEV_USERS = [5619966662]  # User id of dev users
-    DEMONS = [5619966662]  # User id of support users
-    TIGERS = [5619966662]  # User id of tiger users
-    WOLVES = [5619966662]  # User id of whitelist users
+    DRAGONS = []  # User id of sudo users
+    DEV_USERS = []  # User id of dev users
+    DEMONS = []  # User id of support users
+    TIGERS = []  # User id of tiger users
+    WOLVES = []  # User id of whitelist users
 
     ALLOW_CHATS = True
     ALLOW_EXCL = True
