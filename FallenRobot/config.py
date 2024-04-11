@@ -7,7 +7,7 @@ class Config(object):
 
     CASH_API_KEY = "NA11YFJ9ED9HBFH9"
 
-    DATABASE_URL = ""
+    DATABASE_URL = "postgresql://cluuyrg340013a4me382u4t2x:95n8IsjX4KLwPg5wgUdMDsPL@104.251.218.202:9010/cluuyrg350015a4me49x20uo8"
     EVENT_LOGS = "-1001535538162"  # Event logs channel to note down important bot level
     MONGO_DB_URI = "mongodb+srv://test:test@cluster0.q9llhnj.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"  # Get ths value from cloud.mong
     # Telegraph link of the image which will be shown at start command.
